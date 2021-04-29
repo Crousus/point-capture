@@ -1,0 +1,9 @@
+name: PointCapture
+version: @version@
+main: de.chaosolymp.pointcapture.PointCapture
+api-version: 1.16
+prefix: PointCapture
+depend: [ WorldGuard ]
+authors: [ Crousus ]
+description: Used for capturing points in event gamemodes
+website: https://chaosolymp.de
