@@ -1,14 +1,8 @@
 game1:
-  game1:
-    region: 'game1'
+  tower1:
+    region: 'tower1'
     world: 'world'
-    teamA:
-      name: 'Angreifer'
-      particle: 'RED_WOOL'
-    teamB:
-      name: 'Verteidiger'
-      particle: 'BLUE_WOOL'
-    max-capture-time: 200
+    max-capture-time: 50
     player-multiplier: 1.5
     capture-teamA-redstoneblock:
       x: -18

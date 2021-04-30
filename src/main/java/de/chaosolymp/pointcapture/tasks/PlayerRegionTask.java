@@ -29,7 +29,6 @@ public class PlayerRegionTask implements Runnable {
         regionsStrings = sub.getKeys(false);
         this.game = game;
         for(String s : regionsStrings){
-            System.out.println(s);
             Region rg = new Region();
             rg.setName(sub.getString(s+".region"));
             rg.setMaxCaptureTime(sub.getInt(s+".max-capture-time"));
@@ -103,7 +102,7 @@ public class PlayerRegionTask implements Runnable {
             } else if (rg.getMembersB() == 0 && rg.getMembersA() == 0 && rg.getScore() != 0) {
                 if(rg.getLockedScore() > 0) {
                     if (rg.getScore() < rg.getLockedScore()) {
-                        rg.setScore(rg.getScore() + 5);
+                        rg.setScore(rg.getScore() + 2);
                         if (rg.getScore() > rg.getLockedScore()) {
                             //Autotreturn to captured point by Attackers
                             rg.setScore(rg.getLockedScore());
@@ -112,7 +111,7 @@ public class PlayerRegionTask implements Runnable {
                     }
                 } else if(rg.getLockedScore() < 0){
                     if (rg.getScore() > rg.getLockedScore()) {
-                        rg.setScore(rg.getScore() - 5);
+                        rg.setScore(rg.getScore() - 2);
                         if (rg.getScore() < rg.getLockedScore()) {
                             //Autotreturn to captured point by Defenders
                             rg.setScore(rg.getLockedScore());
@@ -162,7 +161,6 @@ public class PlayerRegionTask implements Runnable {
                         rg.getaCapture().getBlock().setType(Material.AIR,true);
                 }
             }
-            System.out.println(rg.getScore());
             int i = 0;
             int max = (int) Math.abs(rg.getScore())/(rg.getMaxCaptureTime()/rg.getTowers().length);
             for(Location loc : rg.getTowers()) {
