@@ -9,6 +9,9 @@ import de.chaosolymp.pointcapture.PointCapture;
 import de.chaosolymp.pointcapture.Region;
 import de.chaosolymp.pointcapture.config.RegionConfig;
 import org.bukkit.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -61,6 +64,10 @@ public class PlayerRegionTask implements Runnable {
                     sub.getDouble(s+".neutralize-redstoneblock.y"),
                     sub.getDouble(s+".neutralize-redstoneblock.z")));
         }
+    }
+
+    public HashMap<String, Region> getRegions(){
+        return regions;
     }
 
     @Override

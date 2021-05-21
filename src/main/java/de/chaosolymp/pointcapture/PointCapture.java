@@ -5,9 +5,12 @@ import de.chaosolymp.pointcapture.tasks.PlayerRegionTask;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
+
 public final class PointCapture extends JavaPlugin {
 
     private static PointCapture plugin;
+    HashMap<String, PlayerRegionTask> tasks = new HashMap<>();
 
     @Override
     public void onEnable() {
@@ -19,7 +22,11 @@ public final class PointCapture extends JavaPlugin {
 
         this.saveDefaultConfig();
 
-        Bukkit.getScheduler().runTaskTimer(this,new PlayerRegionTask("game1"),300l,20l);
+        for(String region: RegionConfig.get().getKeys(false)) {
+            PlayerRegionTask task = new PlayerRegionTask(region);
+            Bukkit.getScheduler().runTaskTimer(this,task,300l,20l);
+            tasks.put(region,task);
+        }
 
     }
 
